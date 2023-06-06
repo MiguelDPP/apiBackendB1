@@ -15,10 +15,12 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('food')->unsigned();
             $table->foreign('food')->references('id')->on('food');
-            $table->bigInteger('student')->unsigned();
-            $table->foreign('student')->references('id')->on('students');
+            $table->bigInteger('client')->unsigned();
+            $table->foreign('client')->references('id')->on('clients');
+            $table->bigInteger('price');
             $table->bigInteger('amount');
             $table->boolean('is_paid');
+            $table->date('date');
             $table->timestamps();
         });
     }

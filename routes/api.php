@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FoodController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,9 +28,16 @@ Route::post('login', [AuthController::class, 'login']);
 Route::post('getUserWithID', [AuthController::class, 'getUserWithID']);
 
 
-Route::middleware(['auth:sanctum'])->group(function(){
+Route::get('foods', [FoodController::class,'index']);
+Route::get('students', [StudentController::class,'index']);
+Route::post('findClient', [StudentController::class,'findClient']);
 
-    Route::get('foods', [FoodController::class,'index']);
+Route::get('orders', [OrderController::class,'index']);
+Route::post('getOrder', [OrderController::class,'getOrder']);
+Route::post('createOrder', [OrderController::class,'createOrder']);
+Route::post('getOrdersByClient', [OrderController::class,'getOrdersByClient']);
+
+Route::middleware(['auth:sanctum'])->group(function(){
     Route::post('food/store', [FoodController::class,'store']);
     Route::get('logout', [AuthController::class, 'logout']);
 });

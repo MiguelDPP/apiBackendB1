@@ -38,5 +38,12 @@ class FoodSeeder extends Seeder
             'price' => '8000',
             'type' => 'cena'
         ]);
+
+        DB::table('clients')->insert([
+            'identification' => '123456789',
+            'name' => 'Juan Perez',
+            'type' => 'estudiante'
+        ]);
+
     }
 }
