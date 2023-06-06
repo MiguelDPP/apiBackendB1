@@ -85,6 +85,8 @@ class OrderController extends Controller
 
         if($client){
             $orders = order::where('client', $client->id)->get();
+
+            $orders->load('client', 'food');
             return response()->json([
                 'message' => 'Orders found',
                 'orders' => $orders
