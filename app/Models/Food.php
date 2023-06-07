@@ -14,6 +14,7 @@ class Food extends Model
         'description',
         'count',
         'price',
+        'featured',
         'type'
     ];
 }

@@ -8,7 +8,6 @@ use Validator;
 Use \stdClass;
 Use App\File;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Storage;
 
 class FoodController extends Controller
 {
@@ -51,21 +50,36 @@ class FoodController extends Controller
  
         //Mover la imagen de la ruta temporal a la carpeta store
 
-        /*$path_end = $request->file('featured')->store('public/foods');
-        $url_featured = Storage::url($path_end);*/
+
+        $path = '';
+        $allowedfileExtension=['jpeg','jpg','png'];
+        $file = $request->file('featured');
+        $extension = $file->getClientOriginalExtension();
+        $check = in_array($extension,$allowedfileExtension);
+        if($check) {
+            $path = $file->store('public/features');
+            $name = $file->getClientOriginalName();
+        }
+
+        $path = str_replace('public', 'storage', $path);
+        //$path_end = $request->file('featured')->store('public/foods');
+        
+        //$url_featured = Storage::url($path_end);
+
         $url_featured  = '';
         $user = Food::create([
             'name' => $request->name,
             'description' => $request->description,
             'count' => $request->count,
             'price' => $request->price,
+            'featured' => $path,
             'type' => $request->type,
         ]);
 
 
         return response()->json([
             'type_response' => '1',
-            'data' => 'Comida registrada correctamente!',
+            'data' => 'Añadida Correctamente',
         ]);
 
     }
