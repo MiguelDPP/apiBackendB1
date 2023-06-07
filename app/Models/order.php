@@ -26,7 +26,7 @@ class order extends Model
 
     public function food()
     {
-        return $this->belongsTo(food::class, 'food', 'id');
+        return $this->belongsTo(Food::class, 'food', 'id');
     }
 
     
