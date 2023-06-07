@@ -12,6 +12,7 @@ class OrderController extends Controller
     {
         //
         $orders = order::all();
+        $orders->load('client', 'food');
         return $orders; 
     }
 
