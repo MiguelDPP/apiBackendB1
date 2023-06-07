@@ -21,17 +21,12 @@ class order extends Model
 
     public function client()
     {
-        return $this->belongsTo(student::class, 'client', 'identification');
+        return $this->belongsTo(student::class, 'client', 'id');
     }
 
     public function food()
     {
         return $this->belongsTo(food::class, 'food', 'id');
-    }
-
-    public function order()
-    {
-        return $this->hasMany(order::class);
     }
 
     
