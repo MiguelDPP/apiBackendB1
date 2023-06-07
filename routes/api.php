@@ -36,8 +36,9 @@ Route::get('orders', [OrderController::class,'index']);
 Route::post('getOrder', [OrderController::class,'getOrder']);
 Route::post('createOrder', [OrderController::class,'createOrder']);
 Route::post('getOrdersByClient', [OrderController::class,'getOrdersByClient']);
+Route::post('food/store', [FoodController::class,'store']);
 
 Route::middleware(['auth:sanctum'])->group(function(){
-    Route::post('food/store', [FoodController::class,'store']);
+  
     Route::get('logout', [AuthController::class, 'logout']);
 });
