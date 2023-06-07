@@ -21,7 +21,7 @@ class order extends Model
 
     public function client()
     {
-        return $this->belongsTo(student::class, 'client', 'id');
+        return $this->belongsTo(student::class, 'client', 'identification');
     }
 
     public function food()
